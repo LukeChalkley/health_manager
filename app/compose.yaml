@@ -1,0 +1,6 @@
+﻿services:
+  proto_console:
+    image: proto_console
+    build:
+      context: .
+      dockerfile: proto_console/Dockerfile
