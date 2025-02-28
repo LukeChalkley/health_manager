@@ -13,6 +13,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "domain_model", "domain_model\domain_model.csproj", "{BBAD0476-2F7A-46FC-9A00-5AAC3529D3DC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "domain_model_migrations", "domain_model_migrations\domain_model_migrations.csproj", "{073CF995-C6C4-48E2-ACB6-09F13032D5C9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,5 +37,9 @@ Global
 		{BBAD0476-2F7A-46FC-9A00-5AAC3529D3DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BBAD0476-2F7A-46FC-9A00-5AAC3529D3DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BBAD0476-2F7A-46FC-9A00-5AAC3529D3DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{073CF995-C6C4-48E2-ACB6-09F13032D5C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{073CF995-C6C4-48E2-ACB6-09F13032D5C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{073CF995-C6C4-48E2-ACB6-09F13032D5C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{073CF995-C6C4-48E2-ACB6-09F13032D5C9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

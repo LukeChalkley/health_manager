@@ -8,11 +8,11 @@ using domain_model.Contexts;
 
 #nullable disable
 
-namespace domain_model.Migrations
+namespace domain_model_migrations.Migrations
 {
     [DbContext(typeof(HealthManagerContext))]
-    [Migration("20250228080056_Initial Medication")]
-    partial class InitialMedication
+    [Migration("20250228090851_Initial Migration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -32,7 +32,11 @@ namespace domain_model.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
-                    b.Property<string>("Name")
+                    b.Property<string>("BrandName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DrugName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

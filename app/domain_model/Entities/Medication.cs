@@ -12,7 +12,12 @@ public class Medication : IDomainEntity<int>
     public int ID { get; }
     
     /// <summary>
-    /// Gets the name of the medication object.
+    /// Gets the drug name of the medication object.
     /// </summary>
-    public string Name { get; protected set; }
+    public string DrugName { get; protected set; }
+    
+    /// <summary>
+    /// Gets the drug name of the medication object. Optional.
+    /// </summary>
+    public string BrandName { get; protected set; }
 }

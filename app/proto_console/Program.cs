@@ -21,12 +21,21 @@ public class Program
 
         var connectionString = configuration.GetConnectionString("healthmanager");
         
-        hostBuilder.Services.AddDbContext<HealthManagerContext>(options => options.UseSqlServer(connectionString));
+
+
+        
         hostBuilder.Services.AddLogging(options =>
         {
             options.ClearProviders();
             options.AddConsole();
         });
+        
+        hostBuilder.Services.AddDbContext<HealthManagerContext>(options =>
+        {
+            options.UseSqlServer(connectionString, 
+                con => con.MigrationsAssembly("domain_model_migrations"));
+        });
+        
         hostBuilder.Services.AddSingleton<Application>();
         hostBuilder.Services.BuildServiceProvider();
         
@@ -37,7 +46,6 @@ public class Program
         
         host.RunAsync();
         
-
         Console.WriteLine("Press any key to exit...");
     }
 }

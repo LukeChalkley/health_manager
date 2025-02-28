@@ -30,6 +30,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\domain_model\domain_model.csproj" />
+      <ProjectReference Include="..\domain_model_migrations\domain_model_migrations.csproj" />
     </ItemGroup>
 
 </Project>
