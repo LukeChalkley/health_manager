@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
 using domain_model.Contexts;
+using domain_model.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -21,9 +22,6 @@ public class Program
 
         var connectionString = configuration.GetConnectionString("healthmanager");
         
-
-
-        
         hostBuilder.Services.AddLogging(options =>
         {
             options.ClearProviders();
@@ -42,11 +40,12 @@ public class Program
         var host = hostBuilder.Build();
         var application = host.Services.GetRequiredService<Application>();
         
-        application.Run(hostBuilder.Environment.EnvironmentName);
-        
         host.RunAsync();
         
-        Console.WriteLine("Press any key to exit...");
+        Console.WriteLine("Please enter a command: ");
+        string command = Console.ReadLine();
+        
+        application.Run(command);
     }
 }
 
@@ -56,13 +55,16 @@ internal class Application
 {
     private readonly ILogger<Application> _logger;
     
-    public Application(ILogger<Application> logger)
+    private readonly HealthManagerContext _context;
+    
+    public Application(ILogger<Application> logger, HealthManagerContext context)
     {
         this._logger = logger;
+        _context = context;
     }
 
-    public void Run(string environment)
+    public void Run(string command)
     {
-        _logger.LogInformation($"Application running inside {environment}...REH");
+        
     }
 }
