@@ -20,4 +20,10 @@ public class Medication : IDomainEntity<int>
     /// Gets the drug name of the medication object. Optional.
     /// </summary>
     public string BrandName { get; protected set; }
+
+    public Medication(string drugName, string brandName)
+    {
+        this.DrugName = drugName;
+        this.BrandName = brandName;
+    }
 }

@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using proto_console;
 
 
 public class Program
@@ -32,39 +33,23 @@ public class Program
         {
             options.UseSqlServer(connectionString, 
                 con => con.MigrationsAssembly("domain_model_migrations"));
-        });
+        }, ServiceLifetime.Scoped);
         
-        hostBuilder.Services.AddSingleton<Application>();
+        hostBuilder.Services.AddScoped<DatabaseSeeder>();
         hostBuilder.Services.BuildServiceProvider();
         
         var host = hostBuilder.Build();
-        var application = host.Services.GetRequiredService<Application>();
-        
+
         host.RunAsync();
         
-        Console.WriteLine("Please enter a command: ");
-        string command = Console.ReadLine();
-        
-        application.Run(command);
+        // Get seeder:
+        using (var scope = host.Services.CreateScope())
+        {
+            var salesContext = scope.ServiceProvider.GetRequiredService<HealthManagerContext>();
+            var seeder = scope.ServiceProvider.GetRequiredService<DatabaseSeeder>();
+            
+            seeder.InsertMedicationData();
+        }
     }
 }
 
-
-
-internal class Application
-{
-    private readonly ILogger<Application> _logger;
-    
-    private readonly HealthManagerContext _context;
-    
-    public Application(ILogger<Application> logger, HealthManagerContext context)
-    {
-        this._logger = logger;
-        _context = context;
-    }
-
-    public void Run(string command)
-    {
-        
-    }
-}
