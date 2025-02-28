@@ -1,11 +1,15 @@
+using System.ComponentModel.DataAnnotations;
+using Microsoft.EntityFrameworkCore;
+
 namespace domain_model.Entities;
 
-public class Medication : IDomainEntity<Guid>
+[PrimaryKey(nameof(ID))]
+public class Medication : IDomainEntity<int>
 {
     /// <summary>
     /// Gets the ID of the Medication object.
     /// </summary>
-    public Guid ID { get; }
+    public int ID { get; }
     
     /// <summary>
     /// Gets the name of the medication object.

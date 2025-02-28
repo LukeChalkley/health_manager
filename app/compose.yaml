@@ -4,6 +4,11 @@
     build:
       context: .
       dockerfile: proto_console/Dockerfile
+  domain_model:
+    image: domain_model
+    build:
+      context: .
+      dockerfile: domain_model/Dockerfile
   sql:
     image: "mcr.microsoft.com/mssql/server:2022-latest"
     container_name: sql_server2022
